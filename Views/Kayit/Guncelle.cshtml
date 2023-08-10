@@ -1,0 +1,139 @@
+﻿@model TelefonRehberi.Models.Entities.Kisi
+@{
+    ViewData["Title"] = "Guncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        background-color: #f2f0f4;
+        color: #333;
+        font-family: Arial, sans-serif;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block; /* remove extra space below image */
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #a28fc9;
+        display: flex;
+        align-items: center;
+    }
+
+    .directory-icon {
+        margin-right: 10px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .search-icon {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .input-group {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .table {
+        width: 80%; /* Adjust the width as needed */
+        margin: 0 auto;
+    }
+
+    .card-photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 20px;
+    }
+
+    .form-container {
+        text-align: center;
+        margin-top: 30px;
+        color: #a28fc9;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+
+    .form-label {
+        text-align: left;
+    }
+
+    .form-control {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 8px;
+    }
+
+    .btn-primary {
+        background-color: #a28fc9;
+        border-color: #a28fc9;
+    }
+
+        .btn-primary:hover {
+            background-color: #895fad;
+            border-color: #895fad;
+        }
+
+    .btn-success {
+        background-color: #9F87AF;
+        border-color: #34bfa3;
+    }
+
+        .btn-success:hover {
+            background-color: #2d8e7f;
+            border-color: #2d8e7f;
+        }
+</style>
+<h1>Kaydı Güncelle</h1>
+
+<form class="form-horizantal" method="post" action="/Kayit/Guncelle">
+    @Html.HiddenFor(x=>x.Id)
+    <div class="form-group">
+
+        @Html.LabelFor(x=>x.Ad)
+        @Html.TextBoxFor(x=>x.Ad,null, new {@class="form-control"})
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(x=>x.Soyad)
+        @Html.TextBoxFor(x=>x.Soyad,null, new {@class="form-control"})
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(x=>x.Numara)
+        @Html.TextBoxFor(x=>x.Numara,null, new {@class="form-control"})
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(x=>x.Eposta)
+        @Html.TextBoxFor(x=>x.Eposta,null, new {@class="form-control"})
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(x=>x.Adres)
+        @Html.TextBoxFor(x=>x.Adres,null, new {@class="form-control"})
+    </div>
+
+  
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" value="Kaydet" />KAYDET </button>
+    </div>
+
+</form>

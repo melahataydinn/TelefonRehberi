@@ -1,0 +1,105 @@
+﻿@model TelefonRehberi.Models.Entities.Kisi
+
+@{
+    ViewData["Title"] = "Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-color: #f2f0f4;
+    }
+
+    .card-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .card {
+        background-color: #f8f7fa;
+        border: 1px solid #d9d6e2;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .card-photo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 20px;
+    }
+
+        .card-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    h2 {
+        color: #a28fc9;
+    }
+
+    hr {
+        border-color: #a28fc9;
+    }
+
+    th {
+        color: #a28fc9;
+    }
+</style>
+
+<div class="card-container">
+    <div class="card">
+        <div class="card-photo">
+            @if (Model.FotoYolu != null)
+            {
+                <img src="@Model.FotoYolu" alt="Fotoğraf" />
+            }
+            else
+            {
+                <p>Fotoğraf yok</p>
+            }
+        </div>
+        <h2>@Model.Ad @Model.Soyad Bilgileri</h2>
+        <hr />
+        <table class="table">
+            <tr>
+                <th style="text-align:left">Ad :</th>
+                <td>@Model.Ad</td>
+            </tr>
+            <tr>
+                <th style="text-align:left">Soyad :</th>
+                <td>@Model.Soyad</td>
+            </tr>
+            <tr>
+                <th style="text-align:left">Numara :</th>
+                <td>@Model.Numara</td>
+            </tr>
+            <tr>
+                <th style="text-align:left">Eposta :</th>
+                <td>@Model.Eposta</td>
+            </tr>
+            <tr>
+                <th style="text-align:left">Website :</th>
+                <td>@Model.Website</td>
+            </tr>
+            <tr>
+                <th style="text-align:left">Adres :</th>
+                <td>@Model.Adres</td>
+            </tr>
+            <tr>
+                <th style="text-align:left">İşlemler :</th>
+                <td style="text-align: center;">
+                    @Html.ActionLink("Guncelle", "Guncelle", new { Id = @Model.Id }, new { @class = "btn btn-warning btn-sm", style = "background-color: #5C5552; border-color: #5C5552; color: white;" })
+                    @Html.ActionLink("Sil", "Sil", new { Id = @Model.Id }, new { @class = "btn btn-danger btn-sm", style = "background-color: #34bfa3; border-color: #34bfa3;" ,onclick = "return confirm('Kaydı silmek istediğinize emin misiniz?');" })
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

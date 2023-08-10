@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#btnGetir').click(function () {
+                var formData = new FormData();
+                formData.append('image', $('#image')[0].files[0]);
+
+                $.ajax({
+                    url: '/Kayit/Getir',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (kisi) {
+                        $('#Ad').val(kisi.Ad);
+                        $('#Soyad').val(kisi.Soyad);
+                        $('#Numara').val(kisi.Numara);
+                        $('#Eposta').val(kisi.Eposta);
+                        $('#Website').val(kisi.Website);
+                        $('#Adres').val(kisi.Adres);
+                    },
+                    error: function () {
+                        alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+                    }
+                });
+            });
+        });
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TelefonRehberi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TelefonRehberi.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <script defer src="https://cdn.crop.guide/loader/l.js?c=123ABC"></script>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="nav-link" asp-area="" asp-controller="Kayit" asp-action="Index" , style="color: rebeccapurple;"> <img src="~/Images/directory.png" alt="Rehber" class="directory-icon" />Rehber</a>
+                </li>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Kayit" asp-action="KayitEkle" , style="color:rebeccapurple;">Kişi Ekle</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @if (TempData["BasariliMesaj"] !=null)
+            {
+                <div class="alert alert-success">
+                    @TempData["BasariliMesaj"]
+                </div>
+            }
+
+            @if (TempData["BasarisizMesaj"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["BasariMesaj"]
+                </div>
+            }
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - TelefonRehberi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
